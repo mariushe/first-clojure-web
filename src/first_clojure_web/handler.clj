@@ -2,14 +2,15 @@
   (:use compojure.core
         first-clojure-web.provider)
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [ring.middleware.params :refer [wrap-params]]
+            [liberator.core :refer [resource defresource]]))
 
 (defroutes app-routes
-  (GET "/" {params :params} (helloworld (get params :name)))
-  (route/resources "/")
-  (route/not-found "Not Found"))
-
+           (GET "/" [] (resource :available-media-types ["application/json"]
+                                    :handle-ok helloworld)))
 (def app
-  (handler/site app-routes))
+  (-> app-routes
+      (wrap-params)))
 
 
