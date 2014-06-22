@@ -1,3 +1,4 @@
-(ns first-clojure-web.provider)
+(ns first-clojure-web.provider
+  (:require [clojure.data.json :as json]))
 
-(def helloworld (fn[name] (str  "{\"Hello\":\"world\"}")))
+(def helloworld (fn[params] (json/write-str {:user (-> params :name)})))

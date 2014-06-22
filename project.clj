@@ -8,4 +8,6 @@
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]
-                        [liberator "0.10.0"]]}})
+                        [liberator "0.10.0"]
+                        [org.clojure/data.json "0.2.5"]
+                        [midje "1.6.3"]]}})

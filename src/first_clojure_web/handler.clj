@@ -7,10 +7,8 @@
             [liberator.core :refer [resource defresource]]))
 
 (defroutes app-routes
-           (GET "/" [] (resource :available-media-types ["application/json"]
-                                    :handle-ok helloworld)))
+           (GET "/" {params :query-params} (resource :available-media-types ["application/json"]
+                                    :handle-ok (helloworld {:name (params "name")}))))
 (def app
   (-> app-routes
       (wrap-params)))
-
-
