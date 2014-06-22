@@ -1,7 +1,9 @@
 (ns first-clojure-web.test.provider
-  (:use clojure.test
-        first-clojure-web.provider))
+  (:require [first-clojure-web.provider :refer :all]
+            [midje.sweet :refer :all]))
 
-(deftest test-app
-  (testing "hello world"
-      (is (= (helloworld {:name "my name"}) "{\"user\":\"my name\"}"))))
+(fact "hello world"
+      (helloworld {:name "my name"}) => "{\"user\":\"my name\"}")
+
+(fact "Add function check"
+      (custom-add 2 2) => 4)
