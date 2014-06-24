@@ -10,4 +10,5 @@
                         [ring-mock "0.1.5"]
                         [liberator "0.10.0"]
                         [org.clojure/data.json "0.2.5"]
-                        [midje "1.6.3"]]}})
+                        [midje "1.6.3"]
+                        [com.novemberain/monger "2.0.0"]]}})
