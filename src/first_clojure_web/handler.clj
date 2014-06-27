@@ -4,11 +4,12 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.json :refer [wrap-json-body]]
             [liberator.core :refer [resource defresource]]))
 
 (defroutes app-routes
-           (GET "/" {params :query-params} (resource :available-media-types ["application/json"]
-                                    :handle-ok (helloworld {:name (params "name")}))))
+           (GET "/api/tweet/:id" [id] (resource :available-media-types ["application/json"]
+                                    :handle-ok (tweet id))))
 (def app
   (-> app-routes
-      (wrap-params)))
+      (wrap-params) (wrap-json-body)))

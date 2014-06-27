@@ -1,6 +1,5 @@
 (ns first-clojure-web.provider
+  (:use first-clojure-web.tweet-dao)
   (:require [clojure.data.json :as json]))
 
-(def helloworld (fn[params] (json/write-str {:user (-> params :name)})))
-
-(def custom-add (fn[first, second] (+ first second)))
+(def tweet (fn[id] (json/write-str (get-tweet id))))
