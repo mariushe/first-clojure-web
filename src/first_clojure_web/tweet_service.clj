@@ -2,6 +2,6 @@
   (:require [first-clojure-web.tweet-dao :as tweet-dao]
             [clojure.data.json :as json]))
 
-(def get-tweets (fn[] (prn(tweet-dao/get-tweets))("{}")))
+(def get-tweets (fn[] (tweet-dao/get-tweets)))
 
 (def save-tweet (fn[tweet] (tweet-dao/save-tweet tweet)))
