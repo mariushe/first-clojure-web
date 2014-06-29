@@ -2,8 +2,12 @@
   (:require [monger.core :as mg]
             [monger.collection :as mc]))
 
-;; localhost, default port
-(defn get-tweet [data]
+(defn get-tweets [] {:tweet "my tweets"})
+  ;;(let [conn (mg/connect)
+  ;;      db   (mg/get-db conn "myTweet")]
+  ;;  (mc/find-maps db "tweet")))
+
+(defn save-tweet [tweet]
   (let [conn (mg/connect)
-        db   (mg/get-db conn "mytweet")]
-    (mc/insert db "tweet" {:name "John"})))
+        db   (mg/get-db conn "myTweet")]
+    (mc/insert db "tweet" tweet)))
